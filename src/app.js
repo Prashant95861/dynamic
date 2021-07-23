@@ -32,11 +32,11 @@ app.post("/contact",async (req,res) => {
         })
 
         const result = await Userdata.save();
-        res.status(201).render("index");
+        // res.status(201).render("index");
         console.log(result);
 
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send(err).json();
         console.log(err);
     }
 })
