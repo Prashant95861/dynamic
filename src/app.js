@@ -3,9 +3,24 @@ const app = express();
 const port = process.env.PORT || 8000;
 const path = require("path");
 const requests = require("requests");
+const mongoose = require("mongoose");
 
-require("./db/conn");
+// require("./db/conn");
+// TX7lGsLNGiIfUnGj
 const User = require("./model/dyn");
+
+const DB = 'mongodb+srv://Prashant9586:TX7lGsLNGiIfUnGj@newcluster.bdg8h.mongodb.net/dynamicwebsite?retryWrites=true&w=majority';
+
+mongoose.connect(DB,{
+    useNewUrlParser: true,
+    useCreateIndex:true,
+    useUnifiedTopology: true,
+    useFindAndModify:false,  
+}).then(() => {
+   console.log("connection successful");
+}).catch((err) => {
+   console.log(err);
+})
 
 const staticPath = path.join(__dirname,"../public");
 app.use(express.static(staticPath));
